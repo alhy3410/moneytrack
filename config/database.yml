@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+  pool: 5
+
+development:
+  <<: *default
+  database: moneytrack_development
+
+test:
+  <<: *default
+  database: moneytrack_test
+
+production:
+  <<: *default
+  database: moneytrack_production
+  username: moneytrack
+  password: <%= ENV['FLICKR_DATABASE_PASSWORD'] %>

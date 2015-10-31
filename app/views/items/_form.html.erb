@@ -1,0 +1,52 @@
+<div class="form">
+  <div class="top-row">
+    <%= form_for @item do |f| %>
+      <div class="field-wrap">
+        <div class="all-labels">
+          <%= f.label :name, "Company Name", :class => "label-input" %><br />
+        </div>
+        <div class="all-inputs">
+          <%= f.text_field :name %>
+        </div>
+      </div>
+
+      <div class="field-wrap">
+        <div class="all-labels">
+          <%= f.label :category_id, "Category Id", :class => "label-input" %><br />
+        </div>
+        <div class="all-inputs">
+          <%= f.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true %>
+        </div>
+      </div>
+
+      <div class="field-wrap">
+        <div class="all-labels">
+          <%= f.label :entry_id, "Entry", :class => "label-input" %><br />
+        </div>
+        <div class="all-inputs">
+          <%= f.grouped_collection_select :entry_id, Category.order(:name), :entries, :name, :id, :name, include_blank: true %>
+        </div>
+      </div>
+
+      <div class="field-wrap">
+        <div class="all-labels">
+          <%= f.label :amount, "Amount", :class => "label-input" %><br />
+        </div>
+        <div class="all-inputs">
+          <%= f.number_field(:amount, step: 0.01) %>
+        </div>
+      </div>
+
+      <div class="field-wrap">
+        <div class="all-labels">
+          <%= f.label :comment, "Comment", :class => "label-input" %><br />
+        </div>
+        <div class="all-inputs">
+          <%= f.text_field :comment %>
+        </div>
+      </div>
+
+      <div class="actions"><%= f.submit "Submit", :class => "btn btn-primary" %></div>
+    <% end %>
+  </div>
+</div>

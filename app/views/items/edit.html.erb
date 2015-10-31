@@ -1,0 +1,10 @@
+<% if current_user %>
+
+<div class="itemform">
+  <h1>Edit Item Details</h1>
+  <%= render "form" %>
+</div>
+<% else %>
+  You are not currently logged in.
+  <%= link_to "Log In", log_in_path, class: "btn black" %>
+<% end %>

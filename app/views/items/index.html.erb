@@ -1,0 +1,24 @@
+<% if current_user %>
+  <%= link_to 'Add a new Item', new_item_path, class: "btn black" %><br><br>
+  <%= link_to 'Home', root_path, class: "btn black" %><br><br>
+  <%= link_to "Download Excel List", download_path, class: "btn black" %><br><br>
+  <%= link_to "Log Out", log_out_path, class: "btn black" %>
+
+<br>
+  List of All Items
+
+  <% if @items.any? %>
+    <div class="row">
+      <ul>
+        <% @items.each do |item| %>
+          <div class=".col-md-12">
+            <li><%= link_to item.name, item_path(item), class: "item-specific" %> : $<%= item.amount %> - <%= item.created_at.strftime('%Y-%m-%d') %></li>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% else %>
+  You are not authrorized to view this page! Please sign in to view this page.
+  <%= link_to "Log In", log_in_path, class: "btn black" %>
+<% end %>

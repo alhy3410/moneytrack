@@ -1,0 +1,11 @@
+<% if current_user %>
+<%= link_to 'Back to all Items', items_path, class: "btn black" %>
+
+  <div class="itemform">
+    <h1>New Item</h1>
+    <%= render "form" %>
+  </div>
+<% else %>
+  You are not currently logged in.
+  <%= link_to "Log In", log_in_path, class: "btn black" %>
+<% end %>
